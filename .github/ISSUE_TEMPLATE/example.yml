@@ -1,0 +1,17 @@
+name: Example
+description: Example
+title: "[Fill out the form]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Example issue form**
+
+        If you fill out this form then github actions will run and will try to parse the form.
+  - type: input
+    id: foo
+    attributes:
+      label: Foo?
+      description: |
+        Enter a string and github actions will try to parse it.
+      placeholder: "bar"

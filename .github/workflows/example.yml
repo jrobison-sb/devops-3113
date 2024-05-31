@@ -1,0 +1,23 @@
+name: Example
+on:
+  issues:
+    types: opened
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  add_user:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this repo
+        uses: actions/checkout@v4
+
+      - uses: stefanbuck/github-issue-parser@v3.2.0
+        id: issue-parser
+        with:
+          template-path: .github/ISSUE_TEMPLATE/example.yml # optional but recommended
+
+      - name: Read input from the issue, just to validate if stefanbuck/github-issue-parser is working
+        run: cat ${{ runner.temp }}/issue-parser-result.json | jq -S .
